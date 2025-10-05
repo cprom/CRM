@@ -16,13 +16,13 @@ namespace CRM.Models
         public string Type { get; set; } = "Residential"; // Residential, Commercial, Land
         public string Status { get; set; } = "Available"; // Available, Under Contract, Sold
         public decimal Price { get; set; }
-        public DateTime ListingDate { get; set; } = DateTime.UtcNow;
+        // public DateTime ListingDate { get; set; } = DateTime.UtcNow;
 
         public int AgentId { get; set; }
         public User Agent { get; set; } = null!;
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        // public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        // public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation
         public ICollection<Deal> Deals { get; set; } = new List<Deal>();

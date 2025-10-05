@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251004051431_seedData2")]
-    partial class seedData2
+    [Migration("20251005032534_seedDb1")]
+    partial class seedDb1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,9 +35,6 @@ namespace CRM.Migrations
 
                     b.Property<int>("AssignedAgentId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -63,12 +60,14 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AssignedAgentId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Clients");
 
@@ -77,27 +76,23 @@ namespace CRM.Migrations
                         {
                             Id = 1,
                             AssignedAgentId = 2,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(3820),
                             Email = "david.green@email.com",
                             FirstName = "David",
                             LastName = "Green",
                             Phone = "555-2001",
                             Source = "Website",
-                            Status = "Lead",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(3820)
+                            Status = "Lead"
                         },
                         new
                         {
                             Id = 2,
                             AssignedAgentId = 3,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(5040),
                             Email = "eva.martinez@email.com",
                             FirstName = "Eva",
                             LastName = "Martinez",
                             Phone = "555-2002",
                             Source = "Referral",
-                            Status = "Prospect",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(5040)
+                            Status = "Prospect"
                         });
                 });
 
@@ -115,11 +110,8 @@ namespace CRM.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ClosingDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ClientId1")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("ExpectedValue")
                         .HasColumnType("decimal(18, 4)");
@@ -131,8 +123,8 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -140,7 +132,11 @@ namespace CRM.Migrations
 
                     b.HasIndex("ClientId");
 
+                    b.HasIndex("ClientId1");
+
                     b.HasIndex("PropertyId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Deals");
 
@@ -150,24 +146,18 @@ namespace CRM.Migrations
                             Id = 1,
                             AgentId = 2,
                             ClientId = 1,
-                            ClosingDate = new DateTime(2025, 11, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(8840),
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(7970),
                             ExpectedValue = 740000m,
                             PropertyId = 1,
-                            Stage = "Negotiation",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(7970)
+                            Stage = "Negotiation"
                         },
                         new
                         {
                             Id = 2,
                             AgentId = 3,
                             ClientId = 2,
-                            ClosingDate = new DateTime(2025, 12, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(9050),
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(9040),
                             ExpectedValue = 1490000m,
                             PropertyId = 2,
-                            Stage = "Lead",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(9040)
+                            Stage = "Lead"
                         });
                 });
 
@@ -182,7 +172,13 @@ namespace CRM.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ClientId1")
+                        .HasColumnType("int");
+
                     b.Property<int?>("DealId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DealId1")
                         .HasColumnType("int");
 
                     b.Property<string>("FileName")
@@ -193,9 +189,6 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UploadedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("UploadedById")
                         .HasColumnType("int");
 
@@ -203,7 +196,11 @@ namespace CRM.Migrations
 
                     b.HasIndex("ClientId");
 
+                    b.HasIndex("ClientId1");
+
                     b.HasIndex("DealId");
+
+                    b.HasIndex("DealId1");
 
                     b.HasIndex("UploadedById");
 
@@ -217,7 +214,6 @@ namespace CRM.Migrations
                             DealId = 1,
                             FileName = "DavidGreen_Offer.pdf",
                             FilePath = "/docs/offers/DavidGreen_Offer.pdf",
-                            UploadedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(2770),
                             UploadedById = 2
                         },
                         new
@@ -227,7 +223,6 @@ namespace CRM.Migrations
                             DealId = 2,
                             FileName = "EvaMartinez_Contract.pdf",
                             FilePath = "/docs/contracts/EvaMartinez_Contract.pdf",
-                            UploadedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(4400),
                             UploadedById = 3
                         });
                 });
@@ -246,12 +241,6 @@ namespace CRM.Migrations
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -264,11 +253,16 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AgentId");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Interactions");
 
@@ -278,10 +272,8 @@ namespace CRM.Migrations
                             Id = 1,
                             AgentId = 2,
                             ClientId = 1,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(9460),
-                            Date = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(60),
                             Description = "Discussed financing options",
-                            Outcome = "Interested",
+                            Outcome = "Follow-up Needed",
                             Type = "Call"
                         },
                         new
@@ -289,8 +281,6 @@ namespace CRM.Migrations
                             Id = 2,
                             AgentId = 3,
                             ClientId = 2,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(320),
-                            Date = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(320),
                             Description = "Sent property brochure",
                             Outcome = "Follow-up Needed",
                             Type = "Email"
@@ -316,12 +306,6 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ListingDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 4)");
 
@@ -341,8 +325,8 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ZipCode")
                         .IsRequired()
@@ -351,6 +335,8 @@ namespace CRM.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AgentId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Properties");
 
@@ -361,14 +347,11 @@ namespace CRM.Migrations
                             Address = "123 Main St",
                             AgentId = 2,
                             City = "Los Angeles",
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(5660),
-                            ListingDate = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(6850),
                             Price = 750000m,
                             State = "CA",
                             Status = "Available",
                             Title = "3-Bedroom House in LA",
                             Type = "Residential",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(5660),
                             ZipCode = "90001"
                         },
                         new
@@ -377,14 +360,11 @@ namespace CRM.Migrations
                             Address = "500 Business Rd",
                             AgentId = 3,
                             City = "Los Angeles",
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(7100),
-                            ListingDate = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(7100),
                             Price = 1500000m,
                             State = "CA",
                             Status = "Available",
                             Title = "Downtown Office Space",
                             Type = "Commercial",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 248, DateTimeKind.Utc).AddTicks(7100),
                             ZipCode = "90017"
                         });
                 });
@@ -403,10 +383,10 @@ namespace CRM.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("DealId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DealId1")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -424,9 +404,6 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AssignedToId");
@@ -434,6 +411,8 @@ namespace CRM.Migrations
                     b.HasIndex("ClientId");
 
                     b.HasIndex("DealId");
+
+                    b.HasIndex("DealId1");
 
                     b.ToTable("Tasks");
 
@@ -443,26 +422,22 @@ namespace CRM.Migrations
                             Id = 1,
                             AssignedToId = 2,
                             ClientId = 1,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(680),
                             DealId = 1,
                             Description = "Book a house tour with David Green",
-                            DueDate = new DateTime(2025, 10, 7, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(1040),
+                            DueDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Pending",
-                            Title = "Schedule Viewing",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(680)
+                            Title = "Schedule Viewing"
                         },
                         new
                         {
                             Id = 2,
                             AssignedToId = 3,
                             ClientId = 2,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(1690),
                             DealId = 2,
                             Description = "Prepare draft for Eva’s office space deal",
-                            DueDate = new DateTime(2025, 10, 11, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(1690),
+                            DueDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "In Progress",
-                            Title = "Prepare Contract Draft",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 249, DateTimeKind.Utc).AddTicks(1690)
+                            Title = "Prepare Contract Draft"
                         });
                 });
 
@@ -473,9 +448,6 @@ namespace CRM.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -501,9 +473,6 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -512,48 +481,46 @@ namespace CRM.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 247, DateTimeKind.Utc).AddTicks(8480),
                             Email = "alice@crm.com",
                             FirstName = "Alice",
                             LastName = "Johnson",
                             PasswordHash = "hashed_pw1",
                             Phone = "555-1001",
-                            Role = "Admin",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 247, DateTimeKind.Utc).AddTicks(8490)
+                            Role = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 247, DateTimeKind.Utc).AddTicks(9650),
                             Email = "bob@crm.com",
                             FirstName = "Bob",
                             LastName = "Smith",
                             PasswordHash = "hashed_pw2",
                             Phone = "555-1002",
-                            Role = "Agent",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 247, DateTimeKind.Utc).AddTicks(9650)
+                            Role = "Agent"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 247, DateTimeKind.Utc).AddTicks(9650),
                             Email = "charlie@crm.com",
                             FirstName = "Charlie",
                             LastName = "Brown",
                             PasswordHash = "hashed_pw3",
                             Phone = "555-1003",
-                            Role = "Agent",
-                            UpdatedAt = new DateTime(2025, 10, 4, 5, 14, 31, 247, DateTimeKind.Utc).AddTicks(9660)
+                            Role = "Agent"
                         });
                 });
 
             modelBuilder.Entity("CRM.Models.Client", b =>
                 {
                     b.HasOne("CRM.Models.User", "AssignedAgent")
-                        .WithMany("Clients")
+                        .WithMany()
                         .HasForeignKey("AssignedAgentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("CRM.Models.User", null)
+                        .WithMany("Clients")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("AssignedAgent");
                 });
@@ -561,22 +528,30 @@ namespace CRM.Migrations
             modelBuilder.Entity("CRM.Models.Deal", b =>
                 {
                     b.HasOne("CRM.Models.User", "Agent")
-                        .WithMany("Deals")
+                        .WithMany()
                         .HasForeignKey("AgentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CRM.Models.Client", "Client")
-                        .WithMany("Deals")
+                        .WithMany()
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("CRM.Models.Client", null)
+                        .WithMany("Deals")
+                        .HasForeignKey("ClientId1");
 
                     b.HasOne("CRM.Models.Property", "Property")
                         .WithMany("Deals")
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CRM.Models.User", null)
+                        .WithMany("Deals")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Agent");
 
@@ -588,19 +563,27 @@ namespace CRM.Migrations
             modelBuilder.Entity("CRM.Models.Document", b =>
                 {
                     b.HasOne("CRM.Models.Client", "Client")
-                        .WithMany("Documents")
+                        .WithMany()
                         .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("CRM.Models.Client", null)
+                        .WithMany("Documents")
+                        .HasForeignKey("ClientId1");
 
                     b.HasOne("CRM.Models.Deal", "Deal")
-                        .WithMany("Documents")
+                        .WithMany()
                         .HasForeignKey("DealId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("CRM.Models.Deal", null)
+                        .WithMany("Documents")
+                        .HasForeignKey("DealId1");
 
                     b.HasOne("CRM.Models.User", "UploadedBy")
                         .WithMany()
                         .HasForeignKey("UploadedById")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Client");
@@ -613,9 +596,9 @@ namespace CRM.Migrations
             modelBuilder.Entity("CRM.Models.Interaction", b =>
                 {
                     b.HasOne("CRM.Models.User", "Agent")
-                        .WithMany("Interactions")
+                        .WithMany()
                         .HasForeignKey("AgentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CRM.Models.Client", "Client")
@@ -623,6 +606,10 @@ namespace CRM.Migrations
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("CRM.Models.User", null)
+                        .WithMany("Interactions")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Agent");
 
@@ -632,10 +619,14 @@ namespace CRM.Migrations
             modelBuilder.Entity("CRM.Models.Property", b =>
                 {
                     b.HasOne("CRM.Models.User", "Agent")
-                        .WithMany("Properties")
+                        .WithMany()
                         .HasForeignKey("AgentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("CRM.Models.User", null)
+                        .WithMany("Properties")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Agent");
                 });
@@ -645,17 +636,22 @@ namespace CRM.Migrations
                     b.HasOne("CRM.Models.User", "AssignedTo")
                         .WithMany()
                         .HasForeignKey("AssignedToId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CRM.Models.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientId");
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("CRM.Models.Deal", "Deal")
-                        .WithMany("Tasks")
+                        .WithMany()
                         .HasForeignKey("DealId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.NoAction);
+
+                    b.HasOne("CRM.Models.Deal", null)
+                        .WithMany("Tasks")
+                        .HasForeignKey("DealId1");
 
                     b.Navigation("AssignedTo");
 

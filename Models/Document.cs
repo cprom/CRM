@@ -20,6 +20,6 @@ namespace CRM.Models
         public int? DealId { get; set; }
         public Deal? Deal { get; set; }
 
-        public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
+        // public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
     }
 }

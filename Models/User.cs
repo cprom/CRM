@@ -16,10 +16,9 @@ namespace CRM.Models
         public string Phone { get; set; } = string.Empty;
         public string Role { get; set; } = "Agent"; // Admin, Agent, Manager
         public string PasswordHash { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        // public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-                // Navigation
+  // Navigation
         public ICollection<Client> Clients { get; set; } = new List<Client>();
         public ICollection<Property> Properties { get; set; } = new List<Property>();
         public ICollection<Interaction> Interactions { get; set; } = new List<Interaction>();

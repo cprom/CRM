@@ -19,10 +19,10 @@ namespace CRM.Models
 
         public string Stage { get; set; } = "Lead"; // Lead, Negotiation, Offer, Closed Won, Closed Lost
         public decimal ExpectedValue { get; set; }
-        public DateTime ClosingDate { get; set; } = DateTime.UtcNow;
+        // public DateTime ClosingDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        // public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        // public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation
         public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();

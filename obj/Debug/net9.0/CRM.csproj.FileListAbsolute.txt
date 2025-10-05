@@ -217,3 +217,4 @@
 /Users/cprom/Documents/Code/ASPdotNet/CRM/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
 /Users/cprom/Documents/Code/ASPdotNet/CRM/obj/Debug/net9.0/CRM.csproj.AssemblyReference.cache
 /Users/cprom/Documents/Code/ASPdotNet/CRM/obj/Debug/net9.0/CRM.csproj.Up2Date
+/Users/cprom/Documents/Code/ASPdotNet/CRM/obj/Debug/net9.0/CRM.sourcelink.json
