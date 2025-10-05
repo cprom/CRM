@@ -24,7 +24,9 @@ namespace CRM.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()")
                 },
                 constraints: table =>
                 {
@@ -44,6 +46,8 @@ namespace CRM.Migrations
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Source = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AssignedAgentId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -75,7 +79,10 @@ namespace CRM.Migrations
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    ListingDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     AgentId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -103,7 +110,9 @@ namespace CRM.Migrations
                     AgentId = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     Outcome = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -138,6 +147,9 @@ namespace CRM.Migrations
                     AgentId = table.Column<int>(type: "int", nullable: false),
                     Stage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExpectedValue = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    ClosingDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     ClientId1 = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -183,6 +195,7 @@ namespace CRM.Migrations
                     UploadedById = table.Column<int>(type: "int", nullable: false),
                     ClientId = table.Column<int>(type: "int", nullable: true),
                     DealId = table.Column<int>(type: "int", nullable: true),
+                    UploadedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     ClientId1 = table.Column<int>(type: "int", nullable: true),
                     DealId1 = table.Column<int>(type: "int", nullable: true)
                 },
@@ -224,11 +237,13 @@ namespace CRM.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AssignedToId = table.Column<int>(type: "int", nullable: false),
                     ClientId = table.Column<int>(type: "int", nullable: true),
                     DealId = table.Column<int>(type: "int", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
                     DealId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -277,38 +292,38 @@ namespace CRM.Migrations
 
             migrationBuilder.InsertData(
                 table: "Properties",
-                columns: new[] { "Id", "Address", "AgentId", "City", "Price", "State", "Status", "Title", "Type", "UserId", "ZipCode" },
+                columns: new[] { "Id", "Address", "AgentId", "City", "ListingDate", "Price", "State", "Status", "Title", "Type", "UserId", "ZipCode" },
                 values: new object[,]
                 {
-                    { 1, "123 Main St", 2, "Los Angeles", 750000m, "CA", "Available", "3-Bedroom House in LA", "Residential", null, "90001" },
-                    { 2, "500 Business Rd", 3, "Los Angeles", 1500000m, "CA", "Available", "Downtown Office Space", "Commercial", null, "90017" }
+                    { 1, "123 Main St", 2, "Los Angeles", new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(5310), 750000m, "CA", "Available", "3-Bedroom House in LA", "Residential", null, "90001" },
+                    { 2, "500 Business Rd", 3, "Los Angeles", new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(5540), 1500000m, "CA", "Available", "Downtown Office Space", "Commercial", null, "90017" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Deals",
-                columns: new[] { "Id", "AgentId", "ClientId", "ClientId1", "ExpectedValue", "PropertyId", "Stage", "UserId" },
+                columns: new[] { "Id", "AgentId", "ClientId", "ClientId1", "ClosingDate", "ExpectedValue", "PropertyId", "Stage", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 2, 1, null, 740000m, 1, "Negotiation", null },
-                    { 2, 3, 2, null, 1490000m, 2, "Lead", null }
+                    { 1, 2, 1, null, new DateTime(2025, 11, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(6710), 740000m, 1, "Negotiation", null },
+                    { 2, 3, 2, null, new DateTime(2025, 12, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(6870), 1490000m, 2, "Lead", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Interactions",
-                columns: new[] { "Id", "AgentId", "ClientId", "Description", "Outcome", "Type", "UserId" },
+                columns: new[] { "Id", "AgentId", "ClientId", "Date", "Description", "Outcome", "Type", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 2, 1, "Discussed financing options", "Follow-up Needed", "Call", null },
-                    { 2, 3, 2, "Sent property brochure", "Follow-up Needed", "Email", null }
+                    { 1, 2, 1, new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(7700), "Discussed financing options", "Interested", "Call", null },
+                    { 2, 3, 2, new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(7930), "Sent property brochure", "Follow-up Needed", "Email", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Documents",
-                columns: new[] { "Id", "ClientId", "ClientId1", "DealId", "DealId1", "FileName", "FilePath", "UploadedById" },
+                columns: new[] { "Id", "ClientId", "ClientId1", "DealId", "DealId1", "FileName", "FilePath", "UploadedAt", "UploadedById" },
                 values: new object[,]
                 {
-                    { 1, 1, null, 1, null, "DavidGreen_Offer.pdf", "/docs/offers/DavidGreen_Offer.pdf", 2 },
-                    { 2, 2, null, 2, null, "EvaMartinez_Contract.pdf", "/docs/contracts/EvaMartinez_Contract.pdf", 3 }
+                    { 1, 1, null, 1, null, "DavidGreen_Offer.pdf", "/docs/offers/DavidGreen_Offer.pdf", new DateTime(2025, 10, 5, 5, 4, 42, 311, DateTimeKind.Utc).AddTicks(150), 2 },
+                    { 2, 2, null, 2, null, "EvaMartinez_Contract.pdf", "/docs/contracts/EvaMartinez_Contract.pdf", new DateTime(2025, 10, 5, 5, 4, 42, 311, DateTimeKind.Utc).AddTicks(270), 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -316,8 +331,8 @@ namespace CRM.Migrations
                 columns: new[] { "Id", "AssignedToId", "ClientId", "DealId", "DealId1", "Description", "DueDate", "Status", "Title" },
                 values: new object[,]
                 {
-                    { 1, 2, 1, 1, null, "Book a house tour with David Green", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending", "Schedule Viewing" },
-                    { 2, 3, 2, 2, null, "Prepare draft for Eva’s office space deal", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "In Progress", "Prepare Contract Draft" }
+                    { 1, 2, 1, 1, null, "Book a house tour with David Green", new DateTime(2025, 10, 8, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(8570), "Pending", "Schedule Viewing" },
+                    { 2, 3, 2, 2, null, "Prepare draft for Eva’s office space deal", new DateTime(2025, 10, 12, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(9150), "In Progress", "Prepare Contract Draft" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251005032534_seedDb1")]
-    partial class seedDb1
+    [Migration("20251005051630_seedDb2")]
+    partial class seedDb2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,11 @@ namespace CRM.Migrations
 
                     b.Property<int>("AssignedAgentId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -60,6 +65,11 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
@@ -76,23 +86,27 @@ namespace CRM.Migrations
                         {
                             Id = 1,
                             AssignedAgentId = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "david.green@email.com",
                             FirstName = "David",
                             LastName = "Green",
                             Phone = "555-2001",
                             Source = "Website",
-                            Status = "Lead"
+                            Status = "Lead",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             AssignedAgentId = 3,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "eva.martinez@email.com",
                             FirstName = "Eva",
                             LastName = "Martinez",
                             Phone = "555-2002",
                             Source = "Referral",
-                            Status = "Prospect"
+                            Status = "Prospect",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -113,6 +127,16 @@ namespace CRM.Migrations
                     b.Property<int?>("ClientId1")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("ClosingDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
                     b.Property<decimal>("ExpectedValue")
                         .HasColumnType("decimal(18, 4)");
 
@@ -122,6 +146,11 @@ namespace CRM.Migrations
                     b.Property<string>("Stage")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -146,18 +175,24 @@ namespace CRM.Migrations
                             Id = 1,
                             AgentId = 2,
                             ClientId = 1,
+                            ClosingDate = new DateTime(2025, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExpectedValue = 740000m,
                             PropertyId = 1,
-                            Stage = "Negotiation"
+                            Stage = "Negotiation",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             AgentId = 3,
                             ClientId = 2,
+                            ClosingDate = new DateTime(2025, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExpectedValue = 1490000m,
                             PropertyId = 2,
-                            Stage = "Lead"
+                            Stage = "Lead",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -189,6 +224,11 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UploadedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
                     b.Property<int>("UploadedById")
                         .HasColumnType("int");
 
@@ -214,6 +254,7 @@ namespace CRM.Migrations
                             DealId = 1,
                             FileName = "DavidGreen_Offer.pdf",
                             FilePath = "/docs/offers/DavidGreen_Offer.pdf",
+                            UploadedAt = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UploadedById = 2
                         },
                         new
@@ -223,6 +264,7 @@ namespace CRM.Migrations
                             DealId = 2,
                             FileName = "EvaMartinez_Contract.pdf",
                             FilePath = "/docs/contracts/EvaMartinez_Contract.pdf",
+                            UploadedAt = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             UploadedById = 3
                         });
                 });
@@ -240,6 +282,16 @@ namespace CRM.Migrations
 
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<DateTime>("Date")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -272,8 +324,10 @@ namespace CRM.Migrations
                             Id = 1,
                             AgentId = 2,
                             ClientId = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Discussed financing options",
-                            Outcome = "Follow-up Needed",
+                            Outcome = "Interested",
                             Type = "Call"
                         },
                         new
@@ -281,6 +335,8 @@ namespace CRM.Migrations
                             Id = 2,
                             AgentId = 3,
                             ClientId = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Sent property brochure",
                             Outcome = "Follow-up Needed",
                             Type = "Email"
@@ -306,6 +362,16 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<DateTime>("ListingDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 4)");
 
@@ -324,6 +390,11 @@ namespace CRM.Migrations
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -347,11 +418,14 @@ namespace CRM.Migrations
                             Address = "123 Main St",
                             AgentId = 2,
                             City = "Los Angeles",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ListingDate = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 750000m,
                             State = "CA",
                             Status = "Available",
                             Title = "3-Bedroom House in LA",
                             Type = "Residential",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ZipCode = "90001"
                         },
                         new
@@ -360,11 +434,14 @@ namespace CRM.Migrations
                             Address = "500 Business Rd",
                             AgentId = 3,
                             City = "Los Angeles",
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ListingDate = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Price = 1500000m,
                             State = "CA",
                             Status = "Available",
                             Title = "Downtown Office Space",
                             Type = "Commercial",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ZipCode = "90017"
                         });
                 });
@@ -383,6 +460,11 @@ namespace CRM.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
                     b.Property<int?>("DealId")
                         .HasColumnType("int");
 
@@ -394,7 +476,9 @@ namespace CRM.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DueDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -403,6 +487,11 @@ namespace CRM.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.HasKey("Id");
 
@@ -422,22 +511,26 @@ namespace CRM.Migrations
                             Id = 1,
                             AssignedToId = 2,
                             ClientId = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DealId = 1,
                             Description = "Book a house tour with David Green",
-                            DueDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Pending",
-                            Title = "Schedule Viewing"
+                            Title = "Schedule Viewing",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             AssignedToId = 3,
                             ClientId = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DealId = 2,
                             Description = "Prepare draft for Eva’s office space deal",
-                            DueDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "In Progress",
-                            Title = "Prepare Contract Draft"
+                            Title = "Prepare Contract Draft",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -448,6 +541,11 @@ namespace CRM.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -473,6 +571,11 @@ namespace CRM.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("UpdatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -481,32 +584,38 @@ namespace CRM.Migrations
                         new
                         {
                             Id = 1,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alice@crm.com",
                             FirstName = "Alice",
                             LastName = "Johnson",
                             PasswordHash = "hashed_pw1",
                             Phone = "555-1001",
-                            Role = "Admin"
+                            Role = "Admin",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "bob@crm.com",
                             FirstName = "Bob",
                             LastName = "Smith",
                             PasswordHash = "hashed_pw2",
                             Phone = "555-1002",
-                            Role = "Agent"
+                            Role = "Agent",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
+                            CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "charlie@crm.com",
                             FirstName = "Charlie",
                             LastName = "Brown",
                             PasswordHash = "hashed_pw3",
                             Phone = "555-1003",
-                            Role = "Agent"
+                            Role = "Agent",
+                            UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 

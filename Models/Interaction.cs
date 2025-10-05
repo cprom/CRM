@@ -16,9 +16,9 @@ namespace CRM.Models
 
         public string Type { get; set; } = "Note"; // Call, Meeting, Email, Note
         public string Description { get; set; } = string.Empty;
-        // public DateTime Date { get; set; } = DateTime.UtcNow;
+        public DateTime Date { get; set; }
         public string Outcome { get; set; } = "Follow-up Needed";
 
-        // public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
     }
 }

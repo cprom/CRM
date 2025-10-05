@@ -22,7 +22,7 @@ namespace CRM.Models
         public int? DealId { get; set; }
         public Deal? Deal { get; set; }
 
-        // public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        // public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

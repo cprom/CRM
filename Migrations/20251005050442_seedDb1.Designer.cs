@@ -4,6 +4,7 @@ using CRM.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRM.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251005050442_seedDb1")]
+    partial class seedDb1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,7 +175,7 @@ namespace CRM.Migrations
                             Id = 1,
                             AgentId = 2,
                             ClientId = 1,
-                            ClosingDate = new DateTime(2025, 11, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingDate = new DateTime(2025, 11, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(6710),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExpectedValue = 740000m,
                             PropertyId = 1,
@@ -184,7 +187,7 @@ namespace CRM.Migrations
                             Id = 2,
                             AgentId = 3,
                             ClientId = 2,
-                            ClosingDate = new DateTime(2025, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ClosingDate = new DateTime(2025, 12, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(6870),
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ExpectedValue = 1490000m,
                             PropertyId = 2,
@@ -251,7 +254,7 @@ namespace CRM.Migrations
                             DealId = 1,
                             FileName = "DavidGreen_Offer.pdf",
                             FilePath = "/docs/offers/DavidGreen_Offer.pdf",
-                            UploadedAt = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UploadedAt = new DateTime(2025, 10, 5, 5, 4, 42, 311, DateTimeKind.Utc).AddTicks(150),
                             UploadedById = 2
                         },
                         new
@@ -261,7 +264,7 @@ namespace CRM.Migrations
                             DealId = 2,
                             FileName = "EvaMartinez_Contract.pdf",
                             FilePath = "/docs/contracts/EvaMartinez_Contract.pdf",
-                            UploadedAt = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            UploadedAt = new DateTime(2025, 10, 5, 5, 4, 42, 311, DateTimeKind.Utc).AddTicks(270),
                             UploadedById = 3
                         });
                 });
@@ -322,7 +325,7 @@ namespace CRM.Migrations
                             AgentId = 2,
                             ClientId = 1,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Date = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(7700),
                             Description = "Discussed financing options",
                             Outcome = "Interested",
                             Type = "Call"
@@ -333,7 +336,7 @@ namespace CRM.Migrations
                             AgentId = 3,
                             ClientId = 2,
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Date = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(7930),
                             Description = "Sent property brochure",
                             Outcome = "Follow-up Needed",
                             Type = "Email"
@@ -416,7 +419,7 @@ namespace CRM.Migrations
                             AgentId = 2,
                             City = "Los Angeles",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ListingDate = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ListingDate = new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(5310),
                             Price = 750000m,
                             State = "CA",
                             Status = "Available",
@@ -432,7 +435,7 @@ namespace CRM.Migrations
                             AgentId = 3,
                             City = "Los Angeles",
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ListingDate = new DateTime(2025, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ListingDate = new DateTime(2025, 10, 5, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(5540),
                             Price = 1500000m,
                             State = "CA",
                             Status = "Available",
@@ -511,7 +514,7 @@ namespace CRM.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DealId = 1,
                             Description = "Book a house tour with David Green",
-                            DueDate = new DateTime(2025, 10, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 10, 8, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(8570),
                             Status = "Pending",
                             Title = "Schedule Viewing",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -524,7 +527,7 @@ namespace CRM.Migrations
                             CreatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DealId = 2,
                             Description = "Prepare draft for Eva’s office space deal",
-                            DueDate = new DateTime(2025, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DueDate = new DateTime(2025, 10, 12, 5, 4, 42, 310, DateTimeKind.Utc).AddTicks(9150),
                             Status = "In Progress",
                             Title = "Prepare Contract Draft",
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
