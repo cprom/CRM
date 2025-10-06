@@ -6,33 +6,44 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<form>
+<form method="post">
     <div class="row mt-4">
         <div class="col-md-6 mb-3">
             <div class="form-group">
-                <label for="validationDefault01">First name</label>
-                <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="" required>
+                <label asp-for="Clients.FirstName" class="control-label">First name</label>
+                <input asp-for="Clients.FirstName" class="form-control" id="Clients.FirstName" placeholder="First Name">
+                <span asp-validation-for="Clients.FirstName"class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6 mb-3">
             <div class="form-group">
-                <label for="validationDefault02">Last name</label>
-                <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="" required>
+                <label asp-for="Clients.LastName" class="control-label">Last name</label>
+                <input asp-for="Clients.LastName" class="form-control" placeholder="Last Name">
+                <span asp-validation-for="Clients.LastName"class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6 mb-3">
             <div class="form-group">
-                <label for="validationDefaultUsername">Email</label>
-                <input type="email" class="form-control" id="validationDefaultEmail" placeholder="name@example.com" aria-describedby="inputGroupPrepend2" required>
+               <label asp-for="Clients.Email" class="control-label">Email</label>
+                <input asp-for="Clients.Email" class="form-control" placeholder="name@example.com">
+                <span asp-validation-for="Clients.Email"class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-6 mb-3">
             <div class="form-group">
-                <label for="validationDefaultUsername">Phone</label>
-                <input type="phone" class="form-control" id="validationDefaultPhone" placeholder="555-555-5555" aria-describedby="inputGroupPrepend2" required>
+                <label asp-for="Clients.Phone" class="control-label">Phone Number</label>
+                <input asp-for="Clients.Phone" class="form-control" placeholder="555 555 5555">
+                <span asp-validation-for="Clients.Phone"class="text-danger"></span>
             </div>
         </div>
-        <div class="form-row mb-3">
+        <div class="col-md-6 mb-3">
+            <div class="form-group">
+                <label asp-for="Clients.Source" class="control-label">Source</label>
+                <input asp-for="Clients.Source" class="form-control" placeholder="Referral">
+                <span asp-validation-for="Clients.Source"class="text-danger"></span>
+            </div>
+        </div>
+        @* <div class="form-row mb-3">
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="form-group">
@@ -106,11 +117,11 @@
                 <label for="validationDefault05">Zip</label>
                 <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
                 </div>
-            </div>
+            </div> *@
         </div>
         <div class="col-md-6 mb-3">
-            <label for="validationDefault04">Status</label>
-            <select id="statusSelect" class="form-select" aria-label="Select Status">
+            <label asp-for="Clients.Status">Status</label>
+            <select asp-for="Clients.Status" id="statusSelect" class="form-select" aria-label="Select Status">
                 <option selected disabled value="">Choose a status...</option>
                 <option value="Lead">Lead</option>
                 <option value="Prospect">Prospect</option>
@@ -119,17 +130,24 @@
             </select>
         </div>
         <div class="col-md-6 mb-3">
-            <label for="validationDefault04">Assigned Agent</label>
-            <select id="statusSelect" class="form-select" aria-label="Select Status">
+            <label asp-for="Clients.AssignedAgentId">Assigned Agent</label>
+            <select asp-for="Clients.AssignedAgentId" id="statusSelect" class="form-select" aria-label="Select Status">
                 <option selected disabled value="">Choose Agent...</option>
                 @foreach (var agent in Model.UserList)
                 {
-                    <option value={@agent.Id}>@agent.FirstName @agent.LastName</option>
+                    <option value=@agent.Id>@agent.FirstName @agent.LastName</option>
                 }
             </select>
         </div>
     </div>
-    <div class="d-flex justify-content-end mt-3">
-    <button class="btn btn-primary" type="submit">Add Client</button>
+    <div class="d-flex justify-content-end mt-3 mr-3">
+    <a asp-page="Clients" class="btn btn-danger">Back</a>
+    <input class="btn btn-primary" type="submit" ></input>
     </div>
 </form>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -17,7 +17,7 @@ namespace CRM.Models
         public string Source { get; set; } = "Referral";
 
         public int AssignedAgentId { get; set; }
-        public User AssignedAgent { get; set; } = null!;
+        // public User AssignedAgent { get; set; } = null!;
 
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

@@ -94,11 +94,11 @@ namespace CRM.Services
                 .HasDefaultValueSql("GETUTCDATE()");
 
             // Client
-            modelBuilder.Entity<Client>()
-                .HasOne(c => c.AssignedAgent)
-                .WithMany()
-                .HasForeignKey(c => c.AssignedAgentId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<Client>()
+            //     .HasOne(c => c.AssignedAgent)
+            //     .WithMany()
+            //     .HasForeignKey(c => c.AssignedAgentId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Client>()
                 .Property(u => u.CreatedAt)
