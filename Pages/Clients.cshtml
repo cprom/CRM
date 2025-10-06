@@ -5,7 +5,10 @@
     ViewData["Title"] = "Clients";
 }
 
+<div class="d-flex justify-content-between">
 <h1>@ViewData["Title"]</h1>
+<a asp-page="/AddNewClient"><button type="button" class="btn btn-dark">Add New Client</button></a>
+</div>
 
 <table class="table">
     <tr>
@@ -14,8 +17,7 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>Phone</th>
-
-        
+        <th>Action</th>        
     </tr>
 
     @foreach(var client in Model.ClientList)
@@ -26,6 +28,7 @@
             <td>@client.LastName</td>
             <td>@client.Email</td>
             <td>@client.Phone</td>
+            <td><button utton type="button" class="btn btn-dark btn-sm">Edit</button></td>
         </tr>
     }
 </table>
