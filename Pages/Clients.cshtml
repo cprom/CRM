@@ -20,7 +20,7 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Action</th>        
+            <th>Action</th>                
         </tr>
 
         @foreach(var client in Model.ClientList)
@@ -29,9 +29,12 @@
                 <td>@client.Id</td>
                 <td>@client.FirstName</td>
                 <td>@client.LastName</td>
-                <td>@client.Email</td>
+                <td><a href=mailto:{@client.Email}>@client.Email</a></td>
                 <td>@client.Phone</td>
-                <td><button utton type="button" class="btn btn-dark btn-sm">Edit</button></td>
+                <td>
+                    <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit Client"><i class="bi bi-pen"></i></button>
+                    <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Delete Client"><i class="bi bi-trash"></i></button>
+                </td>
             </tr>
         }
     </table>
