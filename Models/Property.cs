@@ -19,7 +19,7 @@ namespace CRM.Models
         public DateTime ListingDate { get; set; }
 
         public int AgentId { get; set; }
-        public User Agent { get; set; } = null!;
+        // public User Agent { get; set; } = null!;
 
         public DateTime CreatedAt { get; set; } 
         public DateTime UpdatedAt { get; set; } 

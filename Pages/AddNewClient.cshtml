@@ -43,23 +43,23 @@
                 <span asp-validation-for="Clients.Source"class="text-danger"></span>
             </div>
         </div>
-        @* <div class="form-row mb-3">
+        <div class="form-row mb-3">
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="form-group">
-                        <label for="validationDefault03">Street</label>
-                        <input type="text" class="form-control" id="validationDefault03" placeholder="Street Address" required>
+                        <label asp-for="Clients.Address">Street</label>
+                        <input asp-for="Clients.Address" type="text" class="form-control" placeholder="Street Address" required>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
-                        <label for="validationDefault03">City</label>
-                        <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+                        <label asp-for="Clients.City">City</label>
+                        <input asp-for="Clients.City" type="text" class="form-control" placeholder="City" required>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                <label for="validationDefault04">State</label>
-                <select id="stateSelect" class="form-select" aria-label="Select State">
+                <label asp-for="Clients.State">State</label>
+                <select asp-for="Clients.State" class="form-select" aria-label="Select State">
                     <option selected disabled value="">Choose a state...</option>
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
@@ -114,10 +114,10 @@
                 </select>
                 </div>
                 <div class="col-md-3 mb-3">
-                <label for="validationDefault05">Zip</label>
-                <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+                <label asp-for="Clients.ZipCode">Zip Code</label>
+                <input asp-for="Clients.ZipCode" type="text" class="form-control" placeholder="Zip" required>
                 </div>
-            </div> *@
+            </div>
         </div>
         <div class="col-md-6 mb-3">
             <label asp-for="Clients.Status">Status</label>
