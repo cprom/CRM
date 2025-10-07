@@ -23,5 +23,10 @@ namespace CRM.Pages
         {
             ClientList = this.context.Clients.ToList();
         }
+
+        public static implicit operator Clients(Client v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

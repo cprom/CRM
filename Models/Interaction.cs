@@ -12,7 +12,7 @@ namespace CRM.Models
         public Client Client { get; set; } = null!;
 
         public int AgentId { get; set; }
-        public User Agent { get; set; } = null!;
+        // public User Agent { get; set; } = null!;
 
         public string Type { get; set; } = "Note"; // Call, Meeting, Email, Note
         public string Description { get; set; } = string.Empty;

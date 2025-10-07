@@ -34,7 +34,7 @@ namespace CRM.Services
 
                  // Seed Clients
             modelBuilder.Entity<Client>().HasData(
-                new Client { Id = 1, FirstName = "David", LastName = "Green", Email = "david.green@email.com", Phone = "555-2001", Status = "Lead", Source = "Website", AssignedAgentId = 2 },
+                new Client { Id = 1, FirstName = "David", LastName = "Green", Email = "david.green@email.com", Phone = "555-2001", Status = "Lead", Source = "Website", Address = "1123 Fake St", City = "Fake City", State = "CA", ZipCode = "90805", AssignedAgentId = 2 },
                 new Client { Id = 2, FirstName = "Eva", LastName = "Martinez", Email = "eva.martinez@email.com", Phone = "555-2002", Status = "Prospect", Source = "Referral", AssignedAgentId = 3 }
             );
 
@@ -79,11 +79,11 @@ namespace CRM.Services
                 .HasDefaultValueSql("GETUTCDATE()");
 
             // Interaction
-            modelBuilder.Entity<Interaction>()
-                .HasOne(i => i.Agent)
-                .WithMany()
-                .HasForeignKey(i => i.AgentId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<Interaction>()
+            //     .HasOne(i => i.Agent)
+            //     .WithMany()
+            //     .HasForeignKey(i => i.AgentId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Interaction>()
                 .Property(u => u.Date)
@@ -94,11 +94,11 @@ namespace CRM.Services
                 .HasDefaultValueSql("GETUTCDATE()");
 
             // Client
-            modelBuilder.Entity<Client>()
-                .HasOne(c => c.AssignedAgent)
-                .WithMany()
-                .HasForeignKey(c => c.AssignedAgentId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<Client>()
+            //     .HasOne(c => c.AssignedAgent)
+            //     .WithMany()
+            //     .HasForeignKey(c => c.AssignedAgentId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Client>()
                 .Property(u => u.CreatedAt)
@@ -109,11 +109,11 @@ namespace CRM.Services
                 .HasDefaultValueSql("GETUTCDATE()");
 
             // Property
-            modelBuilder.Entity<Property>()
-                .HasOne(p => p.Agent)
-                .WithMany()
-                .HasForeignKey(p => p.AgentId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<Property>()
+            //     .HasOne(p => p.Agent)
+            //     .WithMany()
+            //     .HasForeignKey(p => p.AgentId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Property>()
                 .Property(u => u.CreatedAt)
@@ -132,11 +132,11 @@ namespace CRM.Services
                 .HasColumnType("decimal(18, 4)");
 
             // Deal
-            modelBuilder.Entity<Deal>()
-                .HasOne(d => d.Agent)
-                .WithMany()
-                .HasForeignKey(d => d.AgentId)
-                .OnDelete(DeleteBehavior.NoAction);
+            // modelBuilder.Entity<Deal>()
+            //     .HasOne(d => d.Agent)
+            //     .WithMany()
+            //     .HasForeignKey(d => d.AgentId)
+            //     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Deal>()
                 .HasOne(d => d.Client)
