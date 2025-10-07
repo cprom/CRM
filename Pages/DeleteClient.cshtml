@@ -1,7 +1,7 @@
 @page
 @model CRM.Pages.DeleteClient
 @{
-    ViewData["Title"] = "DeleteClient";
+    ViewData["Title"] = "Delete Client";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -9,14 +9,28 @@
 <h3>Are you sure you want to delete this client?</h3>
 
 <div>
-    <div>Name: @Html.DisplayFor(model => model.Clients.FirstName) @Html.DisplayFor(model => model.Clients.LastName)</div>
-    <div>ID: @Html.DisplayFor(model => model.Clients.Id) </div>
+    <div class="">
+    <span class="fw-bold">Name:</span> @Html.DisplayFor(model => model.Clients.FirstName) @Html.DisplayFor(model => model.Clients.LastName)
+    </div>
+    <div>
+        <span class="fw-bold">ID:</span> @Html.DisplayFor(model => model.Clients.Id)
+    </div>
+    <div>
+        <span class="fw-bold">Address: </span>
+        @Html.DisplayFor(model => model.Clients.Address)
+        @Html.DisplayFor(model => model.Clients.City),
+        @Html.DisplayFor(model => model.Clients.State)
+        @Html.DisplayFor(model => model.Clients.ZipCode)
+    </div>
+    <div>
+    <span class="fw-bold">Assigned Agent:</span> @Html.DisplayFor(model => model.Clients.AssignedAgentId)
+    </div>
 </div>
 
 <div class="mt-5">
-        <form method="post">
-        <input type="hidden" asp-for="Clients.Id" />
-        <a asp-page="./Clients" class="btn btn-primary">Back</a>
-        <input type="submit" value="Delete" class="btn btn-danger" />
-        </form>
+    <form method="post">
+    <input type="hidden" asp-for="Clients.Id" />
+    <a asp-page="./Clients" class="btn btn-dark">Cancel</a>
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
 </div>
