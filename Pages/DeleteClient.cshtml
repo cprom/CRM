@@ -1,0 +1,17 @@
+@page
+@model CRM.Pages.DeleteClient
+@{
+    ViewData["Title"] = "DeleteClient";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>Are you sure you want to delete?</h3>
+
+<div>
+        <form method="post">
+        <input type="hidden" asp-for="Clients.Id" />
+        <a asp-page="./Clients" class="btn btn-primary">Back</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        </form>
+</div>
