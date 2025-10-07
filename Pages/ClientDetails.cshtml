@@ -1,0 +1,90 @@
+@page
+@model CRM.Pages.ClientDetails
+@{
+    ViewData["Title"] = "Client Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">ID</div>      
+                    @Html.DisplayFor(model => model.Clients.Id)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">Name</div>      
+                    @Html.DisplayFor(model => model.Clients.FirstName) @Html.DisplayFor(model => model.Clients.LastName)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-6">
+                <div class="fw-bold">Email</div>      
+                @Html.DisplayFor(model => model.Clients.Email)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">Phone</div>      
+                    @Html.DisplayFor(model => model.Clients.Phone)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">Status</div>      
+                    @Html.DisplayFor(model => model.Clients.Status)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">Assigned Agent</div>      
+                    @Html.DisplayFor(model => model.Clients.AssignedAgentId)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">Address</div>      
+                    @Html.DisplayFor(model => model.Clients.Address)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">City</div>      
+                    @Html.DisplayFor(model => model.Clients.City)
+                </div>
+            </div>
+            <div class="col">
+                <div class="col-6">
+                    <div class="fw-bold">State</div>      
+                    @Html.DisplayFor(model => model.Clients.State)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6">
+                <div class="fw-bold">Zip Code</div>      
+                @Html.DisplayFor(model => model.Clients.ZipCode)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-5 float-end">
+    <a asp-page="./Index" class="btn btn-dark">Back</a>
+    <a asp-page="./Edit" asp-route-id="@Model.Clients.Id" class="btn btn-primary">Edit</a>
+</div>
+</div>
