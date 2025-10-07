@@ -39,8 +39,8 @@
                     <td>@client.Source</td>
                     <td>@client.AssignedAgentId</td>
                     <td>
-                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="View Client Details"><i class="bi bi-eye"></i></button>
-                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit Client"><i class="bi bi-pen"></i></button>
+                       <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="View Client Details"><i class="bi bi-eye"></i></button>
+                         <a asp-page="/EditClient" asp-route-id="@client.Id"><button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit Client"><i class="bi bi-pen"></i></button></a>
                         <button type="button" class="btn btn-dark btn-sm ml-4" data-toggle="tooltip" data-placement="bottom" title="Delete Client"><i class="bi bi-trash"></i></button>
                     </td>
                 </tr>

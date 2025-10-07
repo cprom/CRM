@@ -35,9 +35,9 @@ namespace CRM.Pages
             if (!ModelState.IsValid)
             {
                  foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-    {
-        Console.WriteLine($"Validation error: {error.ErrorMessage}");
-    }
+                {
+                    Console.WriteLine($"Validation error: {error.ErrorMessage}");
+                }
                 return Page();
             }
             context.Clients.Add(Clients);
