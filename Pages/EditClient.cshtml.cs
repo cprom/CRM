@@ -23,19 +23,18 @@ namespace CRM.Pages
         
 
         [BindProperty]
-        public CRM.Models.Client Clients { get; set; } = default!;
+        public Client Clients { get; set; } = default!;
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             UserList = this.context.Users.ToList();
-            
+
             if (id == null)
             {
                 Console.WriteLine("No ID");
                 return RedirectToPage("/Clients");
             }
 
-            CRM.Models.Client? clients = await context.Clients.FirstOrDefaultAsync(e => e.Id == id);
-            Console.WriteLine(clients);
+            var clients = await context.Clients.FirstOrDefaultAsync(e => e.Id == id);
 
             if (clients == null)
             {
