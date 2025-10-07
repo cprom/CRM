@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRkTmV3Q2xpZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/cprom/Documents/Code/ASPdotNet/CRM/Pages/ClientDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50RGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/cprom/Documents/Code/ASPdotNet/CRM/Pages/Clients.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xpZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
